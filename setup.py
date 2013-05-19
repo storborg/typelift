@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(name="typelift",
       version='0.1',
-      description='Download Typekit files',
+      description='Pretty much worthless',
       long_description='',
       classifiers=[
           'Programming Language :: Python :: 2.7',
