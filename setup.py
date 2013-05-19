@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(name="typelift",
       version='0.1',
-      description='What it sounds like',
+      description='Download Typekit files',
       long_description='',
       classifiers=[
           'Programming Language :: Python :: 2.7',
@@ -15,12 +15,11 @@ setup(name="typelift",
       install_requires=[
           'requests',
           'lxml',
+          'cssselect',
       ],
       license='MIT',
       packages=['typelift'],
       entry_points=dict(console_scripts=[
           'typelift=typelift:main',
       ]),
-      test_suite='nose.collector',
-      tests_require=['nose'],
       zip_safe=False)
