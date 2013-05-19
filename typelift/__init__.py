@@ -119,12 +119,11 @@ class Extractor(object):
             style = m.group('style')
             weight = m.group('weight')
             url = m.group('url')
-            if self.args.verbose:
-                print "    Found match"
-                print "      font-family: %s" % name
-                print "      font-style: %s" % style
-                print "      font-weight: %s" % weight
-                print "      url: %s..." % url[:50]
+            print "    Found font"
+            print "      font-family: %s" % name
+            print "      font-style: %s" % style
+            print "      font-weight: %s" % weight
+            print "      url: %s..." % url[:50]
             font_name = '%s_%s_%s' % (name, style, weight)
             fonts[font_name] = m.group('url')
 
