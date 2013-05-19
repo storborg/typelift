@@ -56,7 +56,7 @@ class Extractor(object):
         """
         if self.args.verbose:
             print "  Hunting for CSS URL..."
-        regex = 'Typekit\.config\=\{"f"\:"(.+?)"'
+        regex = 'Typekit\.config\=\{[^}]*?"f"\:"(.+?)"'
         m = re.search(regex, s)
         assert m, "typekit js doesn't match for a CSS file!"
         url = m.group(1)
