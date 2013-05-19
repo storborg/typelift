@@ -7,7 +7,7 @@ Photoshop and you realize you're dead on the water because your Photoshop
 install doesn't seem to have access to this funky new font that random web
 jockey put on your website.
 
-Enter Typelift:
+Enter Typelift.
 
 Installation
 ============
@@ -20,7 +20,7 @@ Install with pip::
 Usage
 =====
 
-Just supply URLs where Typekit fonts are used:
+Just supply URLs where Typekit fonts are used::
 
     $ typelift http://www.example.com
 
