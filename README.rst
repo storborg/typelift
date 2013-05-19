@@ -4,8 +4,8 @@ Typelift - Extract Typekit Fonts
 Hokay, so you're sitting there drinking your coffee. Your boss comes over and
 he's like "I need you to mock up a new page, stat!" So then you whip open
 Photoshop and you realize you're dead on the water because your Photoshop
-install doesn't seem to have access to this funky new font that random web
-jockey put on your website.
+install doesn't seem to have this funky new font that random web jockey put on
+your website.
 
 Enter Typelift.
 
@@ -26,7 +26,16 @@ Just supply URLs where Typekit fonts are used::
 
 Then you'll find .otf files in your local directory.
 
-**WARNING** Usage of Typelift is at your own risk.
+To get EOT fonts instead::
+
+    $ typelift http://www.example.com -f eot
+
+Alternate output directory (defaults to the current directory)::
+
+    $ typelift http://www.example.com -o download
+
+**WARNING** Usage of Typelift is at your own risk. It's your responsibility to
+comply with Typekit licenses, etc.
 
 License
 =======
