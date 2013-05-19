@@ -174,7 +174,8 @@ def main():
                    help='URLs to extract from')
     p.add_argument('-v', '--verbose', dest='verbose', action='store_true',
                    default=False, help='Print detailed output')
-    p.add_argument('-f', '--format', dest='format', type=str,
+    p.add_argument('-f', '--format', dest='format',
+                   choices=['otf', 'woff', 'eot'],
                    default='otf', help='Font format to download')
     p.add_argument('-o', '--out', dest='output_dir', type=str,
                    default=None,
