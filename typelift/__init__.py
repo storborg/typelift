@@ -8,6 +8,8 @@ import lxml.html
 from lxml.cssselect import CSSSelector
 import requests
 
+from . import dewoff
+
 
 class Extractor(object):
 
@@ -62,7 +64,7 @@ class Extractor(object):
         url = m.group(1)
 
         # Possible values for this format key seem to be: a, d, i, f, b
-        if self.args.format == 'otf':
+        if self.args.format in ('otf', 'woff'):
             url = url.replace('{format}{/extras*}', 'd')
         elif self.args.format == 'eot':
             o = urlparse(base_url)
@@ -93,9 +95,9 @@ class Extractor(object):
 
     def extract_font_urls(self, css):
         """
-        Given a CSS document containing base64-encoded (data URI) fonts, extract
-        the @font-face declaratons. Return them as a dict mapping font name to
-        opentype font file.
+        Given a CSS document containing base64-encoded (data URI) fonts,
+        extract the @font-face declaratons. Return them as a dict mapping font
+        name to opentype font file.
         """
         if self.args.verbose:
             print "  Extracting CSS fonts..."
@@ -152,7 +154,11 @@ class Extractor(object):
 
         fonts = {}
         for font_name, font_url in font_urls.iteritems():
-            fonts[font_name] = self.load_font_url(font_url, url, headers)
+            font_data = self.load_font_url(font_url, url, headers)
+            if self.args.format == 'otf':
+                # Decode WOFF to OTF
+                font_data = dewoff.woff_to_otf(font_data)
+            fonts[font_name] = font_data
 
         for font_name, font_body in fonts.iteritems():
             path = os.path.join(dir, '%s.%s' % (font_name, self.args.format))
