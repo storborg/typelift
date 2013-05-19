@@ -171,10 +171,13 @@ def main():
                    default=False, help='Print detailed output')
     p.add_argument('-f', '--format', dest='format', type=str,
                    default='otf', help='Font format to download')
+    p.add_argument('-o', '--out', dest='output_dir', type=str,
+                   default=None,
+                   help='Output directory for font files (defaults to CWD)')
 
     args = p.parse_args()
 
-    dir = os.getcwd()
+    dir = args.output_dir or os.getcwd()
     extractor = Extractor(args)
     for url in args.urls:
         extractor.extract(url, dir)
